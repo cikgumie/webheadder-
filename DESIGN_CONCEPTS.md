@@ -191,6 +191,101 @@ Create a Matrix-style developer header with:
 
 ---
 
+## Design 11: Ethereal Light
+**Theme:** Minimalist, architectural, editorial
+**Best for:** Architect portfolios, premium studios, visual showcases
+
+### AI Prompt:
+```
+Create a minimalist architect portfolio header with:
+- Off-white background (#fcfcfc)
+- Clean staggered layout and large whitespace
+- High-contrast black typography with subtle accents
+- Scroll-triggered reveal animations using Intersection Observer
+- Vertical side navigation for social links
+- Large image placeholders with zoom-on-enter effect
+- Minimal CTA style with thin borders
+- Outfit + Inter font pairing
+```
+
+---
+
+## Design 12: Night Stream
+**Theme:** Premium dark SaaS, analytics, glass UI
+**Best for:** Data platforms, AI dashboards, enterprise products
+
+### AI Prompt:
+```
+Create a premium dark SaaS header with:
+- Deep slate-950 background (#020617)
+- Dashboard component reveals (slide-in from sides)
+- High-contrast indigo highlights (#6366f1)
+- Floating glass cards with backdrop blur
+- Hero content centered with glowing orb background
+- Scroll-triggered animations for feature stats
+- Clean CTA pair (solid + glass button)
+- Modern Outfit font for headings
+```
+
+---
+
+## Design 13: Modern Brutalist
+**Theme:** Bold modern, brutalist, high-contrast
+**Best for:** Creative studios, experimental brands, edgy campaigns
+
+### AI Prompt:
+```
+Create a modern brutalist website header with:
+- Off-white paper background and stark black typography
+- Oversized uppercase headline with stroked word treatment
+- Hard-edge layout blocks with thick 3-4px borders
+- Accent color cards (red/yellow) and offset shadow block
+- Uppercase micro labels with wide letter spacing
+- Horizontal ticker strip section with repeating words
+- Strong CTA buttons using black fill and bordered variants
+- Space Grotesk + Manrope font pairing
+```
+
+---
+
+## Design 14: Modern Bento
+**Theme:** Contemporary SaaS, card-based, soft glass
+**Best for:** Product landing pages, AI apps, startup dashboards
+
+### AI Prompt:
+```
+Create a modern bento-grid SaaS header with:
+- Light gradient background (slate/cyan tones)
+- Hero split layout: headline on left, bento cards on right
+- Glassmorphism cards with rounded 24-28px corners
+- One large gradient KPI card plus smaller metric cards
+- Floating region tags with subtle up/down animation
+- Crisp typography pair (Sora + IBM Plex Sans)
+- Primary dark CTA and secondary outlined button
+- Fully responsive stack for mobile (single column)
+```
+
+---
+
+## Design 15: Modern Editorial
+**Theme:** Premium editorial, refined modern, storytelling
+**Best for:** Agencies, lifestyle brands, digital magazines
+
+### AI Prompt:
+```
+Create a modern editorial premium header with:
+- Warm neutral background (off-white/beige tones)
+- Large refined headline with gradient-highlighted phrase
+- Balanced two-column hero with featured story card
+- Rounded soft cards and subtle paper-like grain texture
+- Serif-like display font paired with clean sans font
+- Minimal nav and pill-style CTA buttons
+- Scroll reveal fade-up animations for hero content
+- Mobile-first stack while preserving generous whitespace
+```
+
+---
+
 ## Quick Reference Card
 
 | # | Name | Style | Colors | Best For |
@@ -205,3 +300,8 @@ Create a Matrix-style developer header with:
 | 08 | 3D Product | 3D Tilt Effect | Amber/Orange | Product Launch |
 | 09 | Text Reveal | Typography | Yellow/Orange | Portfolio |
 | 10 | Matrix Code | Terminal Style | Green/Black | Developer Tools |
+| 11 | Ethereal Light | Minimal Architect | White/Black | Architecture |
+| 12 | Night Stream | Dark Glass SaaS | Indigo/Slate | Analytics |
+| 13 | Modern Brutalist | Bold Grid | Red/Black | Creative Studio |
+| 14 | Modern Bento | Soft Bento Cards | Cyan/Indigo | SaaS Product |
+| 15 | Modern Editorial | Premium Storytelling | Beige/Rose | Agency/Editorial |

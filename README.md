@@ -1,4 +1,4 @@
-# Webhedder - 10 Design Concepts dengan AI Prompts
+# Webhedder - 15 Design Concepts dengan AI Prompts
 
 ## 📋 Senarai Design
 
@@ -18,6 +18,11 @@ Setiap design ada file HTML berasingan dengan AI prompt di bahagian atas.
 | 08 | 3D Product | Product Launch | [design-08-3d-product.html](design-08-3d-product.html) |
 | 09 | Text Reveal | Portfolio/Personal | [design-09-text-reveal.html](design-09-text-reveal.html) |
 | 10 | Matrix Code | Developer Tools | [design-10-matrix.html](design-10-matrix.html) |
+| 11 | Ethereal Light | Architect/Minimal | [design-11-ethereal.html](design-11-ethereal.html) |
+| 12 | Night Stream | Dark SaaS | [design-12-night-stream.html](design-12-night-stream.html) |
+| 13 | Modern Brutalist | Bold Modern | [design-13-modern-brutalist.html](design-13-modern-brutalist.html) |
+| 14 | Modern Bento | Modern SaaS Grid | [design-14-modern-bento.html](design-14-modern-bento.html) |
+| 15 | Modern Editorial | Premium Editorial | [design-15-modern-editorial.html](design-15-modern-editorial.html) |
 
 ---
 
@@ -47,14 +52,19 @@ Webhedder/
 ├── design-07-morphing.html         # Individual design
 ├── design-08-3d-product.html       # Individual design
 ├── design-09-text-reveal.html      # Individual design
-└── design-10-matrix.html           # Individual design
+├── design-10-matrix.html           # Individual design
+├── design-11-ethereal.html         # Individual design
+├── design-12-night-stream.html     # Individual design
+├── design-13-modern-brutalist.html # Individual design
+├── design-14-modern-bento.html     # Individual design
+└── design-15-modern-editorial.html # Individual design
 ```
 
 ---
 
 ## ✨ Features
 
-- ✅ **10 unique designs** - Setiap satu ada style sendiri
+- ✅ **15 unique designs** - Setiap satu ada style sendiri
 - ✅ **AI prompt built-in** - Copy & paste terus ke AI
 - ✅ **Standalone files** - Setiap design boleh run sendiri
 - ✅ **Tailwind CSS** - Modern, responsive design

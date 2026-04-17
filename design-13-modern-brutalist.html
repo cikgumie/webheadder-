@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Brutalist - Modern Studio Header</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .stroke-text {
+            -webkit-text-stroke: 2px #0a0a0a;
+            color: transparent;
+        }
+
+        .ticker {
+            animation: ticker 20s linear infinite;
+        }
+
+        @keyframes ticker {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+
+<body class="bg-[#f6f6f2] text-[#0a0a0a] overflow-x-hidden">
+    <nav class="fixed top-0 w-full z-50 border-b-4 border-black bg-[#f6f6f2]">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="font-display font-bold text-2xl tracking-tight">SIGNAL/BRUTAL</div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-widest">
+                <a href="#work" class="hover:text-red-600 transition-colors">Work</a>
+                <a href="#stack" class="hover:text-red-600 transition-colors">Stack</a>
+                <a href="#contact" class="hover:text-red-600 transition-colors">Contact</a>
+            </div>
+            <button class="px-4 py-2 border-2 border-black font-bold text-xs uppercase tracking-widest hover:bg-black hover:text-white transition-colors">Book Call</button>
+        </div>
+    </nav>
+
+    <header class="min-h-screen flex items-center pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-10 items-end">
+            <div class="lg:col-span-8 space-y-8">
+                <p class="inline-flex border-2 border-black px-4 py-2 text-xs font-bold uppercase tracking-[0.25em]">Modern Concept 13</p>
+                <h1 class="font-display text-6xl md:text-8xl lg:text-[120px] font-bold leading-[0.9] uppercase">
+                    We Build <span class="stroke-text">LOUD</span><br>
+                    Digital Presence
+                </h1>
+                <p class="max-w-xl text-lg md:text-xl font-medium">Brutalist layout with oversized typography, hard edges, and intentional tension for high-impact brands.</p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="px-8 py-4 bg-black text-white font-bold uppercase tracking-wider hover:bg-red-600 transition-colors">Start Project</button>
+                    <button class="px-8 py-4 border-2 border-black font-bold uppercase tracking-wider hover:bg-black hover:text-white transition-colors">See Case Study</button>
+                </div>
+            </div>
+            <div class="lg:col-span-4">
+                <div class="bg-red-600 text-white p-6 border-4 border-black shadow-[10px_10px_0_0_#0a0a0a]">
+                    <p class="text-xs uppercase tracking-[0.25em] font-bold mb-4">Current Sprint</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between border-b border-white/40 pb-2">
+                            <span class="font-bold uppercase text-sm">Brand System</span>
+                            <span class="text-sm">92%</span>
+                        </div>
+                        <div class="flex items-center justify-between border-b border-white/40 pb-2">
+                            <span class="font-bold uppercase text-sm">Motion Kit</span>
+                            <span class="text-sm">74%</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold uppercase text-sm">Launch Site</span>
+                            <span class="text-sm">61%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="work" class="pb-12">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+            <article class="border-4 border-black p-6 bg-white">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] mb-2">Brand Sprint</p>
+                <h3 class="font-display text-3xl font-bold mb-3 uppercase">Hyperline</h3>
+                <p class="text-sm font-medium">Rebuilt conversion funnel with a modern asymmetric interface and expressive motion.</p>
+            </article>
+            <article class="border-4 border-black p-6 bg-black text-white">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] mb-2">Creative System</p>
+                <h3 class="font-display text-3xl font-bold mb-3 uppercase">Northform</h3>
+                <p class="text-sm font-medium text-white/80">Component language with bold constraints and scalable design tokens.</p>
+            </article>
+            <article class="border-4 border-black p-6 bg-[#facc15]">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] mb-2">Campaign</p>
+                <h3 class="font-display text-3xl font-bold mb-3 uppercase">Pulse 24</h3>
+                <p class="text-sm font-medium">Fast-turn launch page crafted for social-first distribution and paid ads.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="stack" class="border-y-4 border-black bg-black text-white overflow-hidden py-4">
+        <div class="ticker whitespace-nowrap text-2xl font-display font-bold uppercase tracking-[0.15em]">
+            <span class="mr-12">Strategy</span><span class="mr-12">Design</span><span class="mr-12">Motion</span><span class="mr-12">No Templates</span><span class="mr-12">Pure Intent</span>
+            <span class="mr-12">Strategy</span><span class="mr-12">Design</span><span class="mr-12">Motion</span><span class="mr-12">No Templates</span><span class="mr-12">Pure Intent</span>
+        </div>
+    </section>
+
+    <!-- Floating AI Prompt Button -->
+    <div class="fixed bottom-6 right-6 z-[100] flex flex-col gap-3">
+        <a href="index.html" class="bg-white border-4 border-black text-black p-4 rounded-full shadow-[6px_6px_0_0_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all group flex items-center gap-3">
+            <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 font-bold text-xs uppercase tracking-widest whitespace-nowrap">Back to Hub</span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+        </a>
+        <button onclick="openModal()" class="bg-red-600 border-4 border-black text-white p-4 rounded-full shadow-[6px_6px_0_0_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all group flex items-center gap-3">
+            <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 font-bold text-xs uppercase tracking-widest whitespace-nowrap">View AI Prompt</span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        </button>
+    </div>
+
+    <!-- AI Prompt Modal -->
+    <div id="aiModal" class="fixed inset-0 z-[110] hidden items-center justify-center p-6 bg-black/60 backdrop-blur-sm">
+        <div class="bg-white border-4 border-black rounded-[2.5rem] w-full max-w-lg p-8 shadow-[10px_10px_0_0_#000] animate-in zoom-in-95 duration-200">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-display font-black text-2xl text-black flex items-center gap-2">
+                    <span class="text-red-500">🤖</span> AI Prompt
+                </h3>
+                <button onclick="closeModal()" class="text-slate-500 hover:text-black transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="relative group">
+                <pre id="promptText" class="bg-[#f6f6f2] text-slate-800 p-6 rounded-2xl text-[10px] font-mono leading-relaxed overflow-x-auto border-2 border-black whitespace-pre-wrap">Create a modern brutalist website header with:
+- Off-white paper background and stark black typography
+- Oversized uppercase headline with stroked word treatment
+- Hard-edge layout blocks with thick 3-4px borders
+- Accent color cards (red/yellow) and offset shadow block
+- Uppercase micro labels with wide letter spacing
+- Horizontal ticker strip section with repeating words
+- Strong CTA buttons using black fill and bordered variants
+- Space Grotesk + Manrope font pairing</pre>
+                <div class="absolute top-4 right-4">
+                    <button onclick="copyPrompt()" class="bg-black text-white px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                        Copy
+                    </button>
+                </div>
+            </div>
+            <p class="mt-4 text-slate-500 text-[10px] text-center uppercase tracking-[0.2em] font-bold">Paste this into your favorite LLM</p>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('aiModal');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        function copyPrompt() {
+            const promptText = document.getElementById('promptText').innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const btn = event.currentTarget;
+                const originalContent = btn.innerHTML;
+                btn.innerHTML = '<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Copied!';
+                btn.classList.add('bg-green-500', 'text-white');
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.classList.remove('bg-green-500', 'text-white');
+                }, 2000);
+            });
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    </script>
+</body>
+
+</html>
