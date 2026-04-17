@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethereal - Minimalist Architect Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        ethereal: {
+                            offwhite: '#fcfcfc',
+                            slate: '#1a1a1a',
+                            accent: '#3b82f6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .image-scale {
+            transform: scale(1.1);
+            transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .image-scale.active {
+            transform: scale(1);
+        }
+    </style>
+</head>
+
+<body class="bg-ethereal-offwhite text-ethereal-slate overflow-x-hidden">
+
+    <!-- AI Prompt Banner -->
+    <div class="fixed top-0 left-0 right-0 bg-ethereal-slate text-white p-4 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex-1">
+                <p class="font-bold text-sm mb-1 text-white/50 tracking-widest uppercase">🤖 AI PROMPT</p>
+                <div class="relative group">
+                    <pre id="promptText" class="text-[10px] leading-tight bg-white/5 p-2 rounded-lg overflow-x-auto whitespace-pre-wrap font-mono text-white/70 max-h-24">Create a minimalist architect portfolio header with:
+- Off-white background (#fcfcfc)
+- Clean, staggered grid layout for projects
+- Intersection Observer reveal animations (fade-in-up)
+- Large image containers with zoom-on-enter effect
+- Typographic focus with Outfit font
+- Floating vertical navigation on the right
+- Simple black/white color palette</pre>
+                </div>
+            </div>
+            <div class="flex flex-col gap-2">
+                <button onclick="copyPrompt()" class="bg-white text-black px-4 py-2 rounded-lg font-bold text-xs hover:bg-slate-100 transition-colors flex items-center gap-2 uppercase tracking-wider">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                    Copy
+                </button>
+                <a href="index.html" class="bg-white/10 text-white px-4 py-2 rounded-lg font-bold text-xs hover:bg-white/20 transition-colors text-center border border-white/10 uppercase tracking-wider">
+                    Back
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-[152px] left-0 right-0 z-40 bg-ethereal-offwhite/80 backdrop-blur-md border-b border-black/5">
+        <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
+            <a href="#" class="font-display font-black text-2xl tracking-tighter uppercase">ETHEREAL<span class="text-ethereal-accent">.</span></a>
+            <div class="hidden md:flex items-center gap-12 font-bold text-xs uppercase tracking-widest opacity-40">
+                <a href="#work" class="hover:opacity-100 transition-opacity">Projects</a>
+                <a href="#about" class="hover:opacity-100 transition-opacity">Studio</a>
+                <a href="#contact" class="hover:opacity-100 transition-opacity">Contact</a>
+            </div>
+            <button class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center pt-[240px] px-8">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="max-w-4xl space-y-12">
+                <h1 class="text-7xl lg:text-[140px] font-display font-black leading-[0.85] tracking-tightest reveal">
+                    SIMPLIFYING <br>
+                    THE <span class="italic font-light">SPACE</span>
+                </h1>
+                <div class="flex flex-col md:flex-row gap-8 items-start reveal" style="transition-delay: 0.2s">
+                    <p class="text-xl max-w-md opacity-60 leading-relaxed font-light">
+                        Architectural studio focused on creating timeless structures through minimalist design and material honesty.
+                    </p>
+                    <div class="flex items-center gap-4 group cursor-pointer">
+                        <span class="w-12 h-12 rounded-full border border-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                        </span>
+                        <span class="font-bold text-xs uppercase tracking-widest">Scroll to explore</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Work Showcase (Scroll Anim Example) -->
+    <section id="work" class="py-32 px-8 space-y-32">
+        <!-- Project 01 -->
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-7 overflow-hidden rounded-sm reveal">
+                <div class="aspect-[4/3] bg-slate-100 image-scale">
+                    <div class="w-full h-full flex items-center justify-center text-slate-300 font-display font-black text-6xl">01</div>
+                </div>
+            </div>
+            <div class="md:col-span-5 space-y-6 reveal" style="transition-delay: 0.3s">
+                <span class="text-xs font-bold uppercase tracking-[0.3em] opacity-30">Residential • 2024</span>
+                <h2 class="text-5xl font-display font-black uppercase leading-none">Glass <br> Observatory</h2>
+                <p class="opacity-60 max-w-sm">A transparent dwelling carved into the cliffs of Norway, blurring the lines between nature and shelter.</p>
+                <a href="#" class="inline-block border-b-2 border-black pb-1 font-bold text-xs uppercase tracking-widest hover:text-ethereal-accent hover:border-ethereal-accent transition-all">View Project</a>
+            </div>
+        </div>
+
+        <!-- Project 02 -->
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-5 md:order-1 order-2 space-y-6 reveal text-right" style="transition-delay: 0.3s">
+                <span class="text-xs font-bold uppercase tracking-[0.3em] opacity-30">Cultural • 2023</span>
+                <h2 class="text-5xl font-display font-black uppercase leading-none">Silencio <br> Museum</h2>
+                <p class="opacity-60 max-w-sm ml-auto">Monolithic concrete structures designed to echo the silence of the surrounding desert landscape.</p>
+                <a href="#" class="inline-block border-b-2 border-black pb-1 font-bold text-xs uppercase tracking-widest hover:text-ethereal-accent hover:border-ethereal-accent transition-all">View Project</a>
+            </div>
+            <div class="md:col-span-7 md:order-2 order-1 overflow-hidden rounded-sm reveal">
+                <div class="aspect-[4/3] bg-slate-200 image-scale">
+                    <div class="w-full h-full flex items-center justify-center text-slate-300 font-display font-black text-6xl">02</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vertical Side Bar -->
+    <div class="fixed right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-12 z-20 mix-blend-difference text-white">
+        <span class="h-20 w-[1px] bg-white opacity-20"></span>
+        <div class="flex flex-col gap-8 font-bold text-[10px] uppercase tracking-[0.4em] rotate-180" style="writing-mode: vertical-rl;">
+            <a href="#" class="hover:text-ethereal-accent transition-colors">Instagram</a>
+            <a href="#" class="hover:text-ethereal-accent transition-colors">Behance</a>
+            <a href="#" class="hover:text-ethereal-accent transition-colors">Twitter</a>
+        </div>
+        <span class="h-20 w-[1px] bg-white opacity-20"></span>
+    </div>
+
+    <script>
+        // Intersection Observer for Reveal Animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Find image-scale children and activate them
+                    const image = entry.target.querySelector('.image-scale');
+                    if (image) image.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function copyPrompt() {
+            const text = document.getElementById('promptText').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.currentTarget;
+                const original = btn.innerHTML;
+                btn.innerHTML = 'COPIED!';
+                setTimeout(() => btn.innerHTML = original, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>
