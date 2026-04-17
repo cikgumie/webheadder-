@@ -34,7 +34,7 @@ Setiap design ada file HTML berasingan dengan AI prompt di bahagian atas.
 
 ```
 Webhedder/
-├── Index.html                      # Main showcase page
+├── index.html                      # Main showcase page
 ├── type_effect_sample.html         # Original combined sample
 ├── DESIGN_CONCEPTS.md              # All prompts in one file
 ├── README.md                       # This file
