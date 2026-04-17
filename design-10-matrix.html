@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design 10 - Matrix Code</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-black text-green-400 min-h-screen flex items-center relative overflow-hidden">
+
+    <!-- AI Prompt Banner -->
+    <div class="fixed top-0 left-0 right-0 bg-gradient-to-r from-green-600 to-emerald-600 p-4 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex-1">
+                <p class="font-bold text-sm mb-1 text-black">🤖 AI PROMPT</p>
+                <div class="relative group">
+                    <pre id="promptText" class="text-[10px] leading-tight bg-black/30 p-2 rounded-lg overflow-x-auto whitespace-pre-wrap font-mono text-white/90 max-h-24">Create a Matrix-style developer header with:
+- Black background with canvas overlay
+- Matrix rain: random chars falling (green text)
+- Scanline effect with repeating-linear-gradient
+- Monospace font throughout
+- Terminal mockup with 3 dots (red/yellow/green)
+- Command output simulation
+- 4 stat cards in 2x2 grid
+- Green gradient heading (code.build.ship)</pre>
+                </div>
+            </div>
+            <div class="flex flex-col gap-2">
+                <button onclick="copyPrompt()" class="bg-black text-green-400 px-4 py-2 rounded-lg font-bold text-xs hover:bg-slate-900 transition-colors flex items-center gap-2">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                    Copy Prompt
+                </button>
+                <a href="Index.html" class="bg-white/20 text-black px-4 py-2 rounded-lg font-bold text-xs hover:bg-white/30 transition-colors text-center">
+                    Back to Showcase
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-[152px] left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-40 bg-black/50 backdrop-blur-md border border-green-500/20 rounded-2xl">
+        <div class="px-6 py-4 flex items-center justify-between">
+            <div class="font-mono font-black text-xl flex items-center gap-2">
+                <span class="text-green-500 animate-pulse">></span>
+                <span class="text-white">DEVKIT</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest">
+                <a href="#features" class="text-green-400/70 hover:text-green-400 transition-colors">/features</a>
+                <a href="#pricing" class="text-green-400/70 hover:text-green-400 transition-colors">/pricing</a>
+                <a href="#docs" class="text-green-400/70 hover:text-green-400 transition-colors">/docs</a>
+                <button class="px-4 py-1.5 border border-green-500/50 text-green-400 hover:bg-green-500/10 rounded">login()</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Matrix Rain Background -->
+    <canvas id="matrix-bg" class="fixed inset-0 opacity-20 pointer-events-none"></canvas>
+
+    <!-- Scanline Effect -->
+    <div class="fixed inset-0 pointer-events-none z-30 opacity-50" style="background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);"></div>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center relative z-10 pt-[240px]">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center w-full pb-20">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 font-mono text-sm leading-none">
+                    <span class="animate-pulse">$</span>
+                    initializing_deployment...
+                </div>
+                <h1 class="text-6xl lg:text-8xl font-black font-mono leading-none">
+                    <span class="text-white">code.</span><br />
+                    <span class="text-green-400">build.</span><br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">ship.</span>
+                </h1>
+                <p class="text-green-400/60 text-lg font-mono leading-relaxed max-w-md">
+                    The ultimate developer toolkit for rapid deployment. Zero config, maximum productivity.
+                </p>
+
+                <!-- Terminal Window -->
+                <div class="bg-black/80 rounded-xl border border-green-500/30 p-6 font-mono text-sm shadow-lg shadow-green-500/10 backdrop-blur-sm">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                        <span class="text-[10px] text-green-500/30 ml-2">bash — 80x24</span>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="text-green-400">
+                            <span class="text-green-900">$</span> npm install @devkit/cli
+                        </div>
+                        <div class="text-green-400/40">✓ Package installed successfully</div>
+                        <div class="text-green-400">
+                            <span class="text-green-900">$</span> devkit init --template=starter
+                        </div>
+                        <div class="text-green-400/40">✓ Project scaffolded in 0.3s</div>
+                        <div class="text-green-400">
+                            <span class="text-green-900">$</span> devkit deploy --prod
+                        </div>
+                        <div class="text-emerald-400 font-bold">✓ Deployed to https://your-app.devkit.io</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-4">
+                    <button class="px-8 py-4 bg-green-500 text-black font-bold font-mono rounded-xl hover:bg-green-400 transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)]">
+                        $ get-started
+                    </button>
+                    <button class="px-8 py-4 border border-green-500/30 text-green-400 font-mono font-bold rounded-xl hover:bg-green-500/10 transition-colors">
+                        View on GitHub
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right: Animated Code Stats -->
+            <div class="hidden lg:block relative">
+                <div class="grid grid-cols-2 gap-6 relative">
+                    <div class="bg-black/60 border border-green-500/20 rounded-2xl p-6 hover:border-green-500/50 transition-colors backdrop-blur-sm group">
+                        <div class="text-4xl font-black text-green-400 mb-2 group-hover:scale-110 transition-transform">50ms</div>
+                        <div class="text-green-400/50 text-xs font-mono uppercase tracking-widest">Avg Response</div>
+                    </div>
+                    <div class="bg-black/60 border border-green-500/20 rounded-2xl p-6 hover:border-green-500/50 transition-colors backdrop-blur-sm group">
+                        <div class="text-4xl font-black text-emerald-400 mb-2 group-hover:scale-110 transition-transform">99.9%</div>
+                        <div class="text-green-400/50 text-xs font-mono uppercase tracking-widest">Uptime SLA</div>
+                    </div>
+                    <div class="bg-black/60 border border-green-500/20 rounded-2xl p-6 hover:border-green-500/50 transition-colors backdrop-blur-sm group">
+                        <div class="text-4xl font-black text-cyan-400 mb-2 group-hover:scale-110 transition-transform">10M+</div>
+                        <div class="text-green-400/50 text-xs font-mono uppercase tracking-widest">Deploys</div>
+                    </div>
+                    <div class="bg-black/60 border border-green-500/20 rounded-2xl p-6 hover:border-green-500/50 transition-colors backdrop-blur-sm group">
+                        <div class="text-4xl font-black text-lime-400 mb-2 group-hover:scale-110 transition-transform">∞</div>
+                        <div class="text-green-400/50 text-xs font-mono uppercase tracking-widest">Possibilities</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-32 relative z-10 border-t border-green-500/10 bg-black/40 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20">
+                <h2 class="text-4xl font-black font-mono text-white mb-4 uppercase tracking-tight">System_Features</h2>
+                <div class="h-1 w-20 bg-green-500"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 border border-green-500/20 bg-black/60 rounded-xl hover:border-green-500 transition-colors group">
+                    <div class="text-green-500 mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold font-mono text-white mb-4">_Accelerated_Core</h3>
+                    <p class="text-green-400/50 font-mono text-sm leading-relaxed">Proprietary neural execution engine designed for high-concurrency tasks and zero-latency routing.</p>
+                </div>
+                <div class="p-8 border border-green-500/20 bg-black/60 rounded-xl hover:border-green-500 transition-colors group">
+                    <div class="text-green-500 mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold font-mono text-white mb-4">_Encrypted_Link</h3>
+                    <p class="text-green-400/50 font-mono text-sm leading-relaxed">Quantum-resistant encryption layers ensuring data integrity across every node in the mesh network.</p>
+                </div>
+                <div class="p-8 border border-green-500/20 bg-black/60 rounded-xl hover:border-green-500 transition-colors group">
+                    <div class="text-green-500 mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold font-mono text-white mb-4">_Shadow_Docs</h3>
+                    <p class="text-green-400/50 font-mono text-sm leading-relaxed">Real-time generated documentation that lives alongside your production code. Always accurate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-32 relative z-10 border-t border-green-500/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-black font-mono text-white mb-4 uppercase">License_Tiers</h2>
+                <p class="text-green-400/50 font-mono text-sm max-w-xl mx-auto">Select the protocol that matches your operational requirements.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tier 1 -->
+                <div class="p-8 border border-green-500/20 bg-black/60 rounded-xl hover:border-green-500/50 transition-all flex flex-col">
+                    <div class="font-mono text-xs text-green-500/50 mb-2 tracking-[0.3em] uppercase">LEVEL_01</div>
+                    <h3 class="text-2xl font-bold font-mono text-white mb-6">FREELANCER</h3>
+                    <div class="text-4xl font-black font-mono text-green-400 mb-8">$0.00<span class="text-xs text-green-900">/mo</span></div>
+                    <ul class="space-y-4 font-mono text-xs text-green-400/60 mb-10 flex-grow">
+                        <li class="flex items-center gap-3">
+                            <span class="text-green-500">[+]</span> 3 Project Nodes
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-green-500">[+]</span> Basic Analytics
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-green-500">[+]</span> Public Mesh Access
+                        </li>
+                    </ul>
+                    <button class="w-full py-4 border border-green-500/30 font-mono text-xs hover:bg-green-500 hover:text-black transition-all">INITIALIZE()</button>
+                </div>
+
+                <!-- Tier 2 -->
+                <div class="p-8 border-2 border-green-500 bg-green-500/5 rounded-xl flex flex-col relative overflow-hidden shadow-[0_0_30px_rgba(34,197,94,0.1)]">
+                    <div class="absolute top-0 right-0 bg-green-500 text-black font-mono text-[10px] px-3 py-1 font-bold">RECOM_PROTOCOL</div>
+                    <div class="font-mono text-xs text-green-500 mb-2 tracking-[0.3em] uppercase">LEVEL_02</div>
+                    <h3 class="text-2xl font-bold font-mono text-white mb-6">PRO_OPS</h3>
+                    <div class="text-4xl font-black font-mono text-green-400 mb-8">$42.00<span class="text-xs text-green-900">/mo</span></div>
+                    <ul class="space-y-4 font-mono text-xs text-green-400 mb-10 flex-grow">
+                        <li class="flex items-center gap-3">
+                            <span class="text-green-500">[+]</span> ∞ Project Nodes
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-green-500">[+]</span> Real-time Telemetry
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-green-500">[+]</span> Private Mesh Access
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-green-500">[+]</span> 24/7 Priority Support
+                        </li>
+                    </ul>
+                    <button class="w-full py-4 bg-green-500 text-black font-mono text-xs font-bold hover:bg-green-400 shadow-[0_0_20px_rgba(34,197,94,0.4)]">INITIALIZE()</button>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="p-8 border border-green-500/20 bg-black/60 rounded-xl hover:border-green-500/50 transition-all flex flex-col">
+                    <div class="font-mono text-xs text-green-500/50 mb-2 tracking-[0.3em] uppercase">LEVEL_03</div>
+                    <h3 class="text-2xl font-bold font-mono text-white mb-6">ENTERPRISE</h3>
+                    <div class="text-4xl font-black font-mono text-green-400 mb-8">CUSTOM</div>
+                    <ul class="space-y-4 font-mono text-xs text-green-400/60 mb-10 flex-grow">
+                        <li class="flex items-center gap-3">
+                            <span class="text-green-500">[+]</span> Isolated Core Node
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-green-500">[+]</span> Custom Integrations
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-green-500">[+]</span> SLA Guarantee
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-green-500">[+]</span> Dedicated Handler
+                        </li>
+                    </ul>
+                    <button class="w-full py-4 border border-green-500/30 font-mono text-xs hover:bg-green-500 hover:text-black transition-all">ESTABLISH_UPLINK()</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 relative z-10 border-t border-green-500/10 bg-black">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 text-mono">
+            <div class="col-span-2 md:col-span-1">
+                <div class="font-mono font-black text-2xl mb-6">
+                    <span class="text-green-500 animate-pulse">></span> DEVKIT
+                </div>
+                <p class="text-green-500/30 text-xs leading-relaxed font-mono">
+                    System_Version: 2.1.0-stable<br>
+                    Build_ID: MATRIX_RAIN_8821<br>
+                    Status: OPERATIONAL
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-xs mb-6 uppercase tracking-widest font-mono">// NAVIGATION</h4>
+                <ul class="space-y-3 text-[10px] text-green-500/50 font-mono">
+                    <li><a href="#" class="hover:text-green-400 transition-colors">/features</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors">/pricing</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors">/terms</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-xs mb-6 uppercase tracking-widest font-mono">// SOCIAL_MESH</h4>
+                <ul class="space-y-3 text-[10px] text-green-500/50 font-mono">
+                    <li><a href="#" class="hover:text-green-400 transition-colors">github.com/devkit</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors">twitter.com/devkit</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-xs mb-6 uppercase tracking-widest font-mono">// LOG_FILES</h4>
+                <p class="text-[10px] text-green-500/30 font-mono leading-relaxed">
+                    [14:22:01] System check: OK<br>
+                    [14:22:05] Uplink stable<br>
+                    [14:22:12] 0 vulnerabilities detected
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-20 pt-8 border-t border-green-500/5 text-center">
+            <p class="text-[10px] text-green-500/20 font-mono tracking-widest uppercase">&copy; 2026 DEVKIT_PROTOCOLS. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+-=[]{}|;:,.<>?';
+        const fontSize = 14;
+        const columns = Math.floor(canvas.width / fontSize);
+        const drops = new Array(columns).fill(1);
+
+        function render() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#10b981'; // Tailwind emerald-500
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+            requestAnimationFrame(render);
+        }
+        render();
+
+        function copyPrompt() {
+            const promptText = document.getElementById('promptText').innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const btn = event.target.closest('button');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Copied!';
+                btn.classList.add('bg-green-500', 'text-black');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('bg-green-500', 'text-black');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
+</body>
+</html>

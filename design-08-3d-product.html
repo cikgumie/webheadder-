@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design 08 - 3D Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .rotate-y-12 {
+            transform: rotateY(12deg);
+        }
+        .rotate-x-6 {
+            transform: rotateX(6deg);
+        }
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200">
+
+    <!-- AI Prompt Banner -->
+    <div class="fixed top-0 left-0 right-0 bg-gradient-to-r from-amber-600 to-orange-700 p-4 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex-1">
+                <p class="font-bold text-sm mb-1 text-black">🤖 AI PROMPT</p>
+                <div class="relative group">
+                    <pre id="promptText" class="text-[10px] leading-tight bg-black/30 p-2 rounded-lg overflow-x-auto whitespace-pre-wrap font-mono text-white/90 max-h-24">Create a 3D product header with:
+- Dark gradient background with grid overlay
+- perspective-1000 on container
+- Product card with 3D tilt on hover (rotate-y-12)
+- transform-style: preserve-3d
+- Amber gradient product icon card
+- Floating badges (NEW + In Stock)
+- Feature pills with border
+- 8xl heading with amber accent</pre>
+                </div>
+            </div>
+            <div class="flex flex-col gap-2">
+                <button onclick="copyPrompt()" class="bg-black text-amber-500 px-4 py-2 rounded-lg font-bold text-xs hover:bg-slate-900 transition-colors flex items-center gap-2">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                    Copy Prompt
+                </button>
+                <a href="Index.html" class="bg-white/20 text-black px-4 py-2 rounded-lg font-bold text-xs hover:bg-white/30 transition-colors text-center">
+                    Back to Showcase
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-[152px] left-0 right-0 z-40">
+        <div class="max-w-7xl mx-auto px-6 py-6 border-b border-white/5 bg-slate-950/50 backdrop-blur-md rounded-b-3xl">
+            <div class="flex items-center justify-between">
+                <div class="font-display font-black text-2xl tracking-tighter text-white">
+                    PRO<span class="text-amber-500">MAX</span>
+                </div>
+                <div class="hidden md:flex items-center gap-10 font-bold text-xs uppercase tracking-widest text-slate-400">
+                    <a href="#features" class="hover:text-amber-500 transition-colors">Technology</a>
+                    <a href="#specs" class="hover:text-amber-500 transition-colors">Specifications</a>
+                    <a href="#buy" class="px-6 py-2 bg-amber-500 text-black rounded-lg hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/20">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Background Grid -->
+    <div class="fixed inset-0 opacity-10 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 80px 80px;"></div>
+
+    <!-- Hero Section -->
+    <header id="hero" class="min-h-screen flex items-center relative z-10 pt-[240px] pb-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center w-full">
+            <!-- 3D Floating Product Card -->
+            <div class="relative group perspective-1000 order-2 lg:order-1">
+                <div class="transform transition-transform duration-700 group-hover:rotate-y-12 group-hover:rotate-x-6 preserve-3d">
+                    <!-- Main Card -->
+                    <div class="bg-gradient-to-br from-slate-900 to-black rounded-[3rem] p-16 border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-[150%] h-[150%] bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.1),transparent_70%)] -translate-y-1/2 translate-x-1/2"></div>
+                        <div class="text-center relative z-10">
+                            <!-- Floating Icon -->
+                            <div class="w-56 h-56 mx-auto mb-12 bg-gradient-to-br from-amber-400 to-orange-600 rounded-[2.5rem] shadow-2xl shadow-amber-500/40 flex items-center justify-center transform group-hover:-translate-y-4 group-hover:rotate-12 transition-all duration-500 cursor-pointer">
+                                <svg class="w-32 h-32 text-white drop-shadow-2xl" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-4xl font-black font-display text-white mb-2">ProMax X1</h3>
+                            <p class="text-amber-500/60 font-medium tracking-[0.2em] uppercase text-xs mb-8">Next-Gen Quantum Logic</p>
+                            <div class="inline-block px-10 py-4 bg-white/5 rounded-2xl border border-white/10">
+                                <span class="text-4xl font-black text-white">$499</span>
+                                <span class="text-slate-500 text-sm ml-2">MSRP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Floating Badges -->
+                <div class="absolute -top-6 -left-6 px-10 py-4 bg-amber-500 text-black font-black rounded-3xl shadow-2xl shadow-amber-500/40 animate-bounce text-xl">NEW</div>
+                <div class="absolute bottom-10 -right-10 px-8 py-3 bg-emerald-500 text-white font-bold rounded-2xl shadow-xl border border-white/20 transform rotate-12">✓ 24h Delivery</div>
+            </div>
+
+            <!-- Content -->
+            <div class="space-y-10 order-1 lg:order-2">
+                <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-500 font-black text-sm uppercase tracking-tighter">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
+                    Launch Protocol Active
+                </div>
+                <h1 class="text-7xl md:text-9xl font-black font-display text-white leading-none tracking-tighter">
+                    Beyond <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600">Possible</span>
+                </h1>
+                <p class="text-slate-400 text-xl leading-relaxed max-w-xl">
+                    Experience the pinnacle of engineering. The X1 integrates a 4nm titanium core with high-spectral neural processing for performance that feels like magic.
+                </p>
+
+                <!-- Feature Pills -->
+                <div class="flex flex-wrap gap-4">
+                    <div class="flex items-center gap-3 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl group hover:border-amber-500/50 transition-colors">
+                        <div class="w-2 h-2 rounded-full bg-amber-500"></div>
+                        <span class="text-sm font-bold text-slate-300">Titanium Build</span>
+                    </div>
+                    <div class="flex items-center gap-3 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl group hover:border-amber-500/50 transition-colors">
+                        <div class="w-2 h-2 rounded-full bg-orange-500"></div>
+                        <span class="text-sm font-bold text-slate-300">Neural Engine</span>
+                    </div>
+                    <div class="flex items-center gap-3 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl group hover:border-amber-500/50 transition-colors">
+                        <div class="w-2 h-2 rounded-full bg-rose-500"></div>
+                        <span class="text-sm font-bold text-slate-300">Quantum Cell</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-6 pt-6">
+                    <button class="px-12 py-6 bg-white text-black font-black rounded-2xl hover:bg-amber-500 transition-all text-xl shadow-[0_20px_40px_-10px_rgba(255,255,255,0.25)]">
+                        Pre-Order Now
+                    </button>
+                    <button class="group px-12 py-6 border-2 border-white/10 text-white font-bold rounded-2xl hover:bg-white/5 transition-all flex items-center gap-3 italic">
+                        The Technical Report
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Detailed Features -->
+    <section id="features" class="py-32 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 grid md:grid-cols-2 gap-8">
+                    <div class="p-12 bg-slate-900/50 border border-white/5 rounded-[3rem] space-y-6">
+                        <div class="w-16 h-16 bg-amber-500 text-black rounded-3xl flex items-center justify-center">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                        </div>
+                        <h3 class="text-3xl font-black text-white">Advanced<br>Form Factor</h3>
+                        <p class="text-slate-400 leading-relaxed">Crafted from a single block of aerospace-grade titanium, ensuring durability without the weight.</p>
+                    </div>
+                    <div class="p-12 bg-slate-900/50 border border-white/5 rounded-[3rem] space-y-6">
+                        <div class="w-16 h-16 bg-white text-black rounded-3xl flex items-center justify-center">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                        </div>
+                        <h3 class="text-3xl font-black text-white">Quantum<br>Processor</h3>
+                        <p class="text-slate-400 leading-relaxed">Our first ever logic chip capable of processing over 12 trillion operations per micro-second.</p>
+                    </div>
+                </div>
+                <div class="p-12 bg-gradient-to-br from-amber-500 to-orange-700 rounded-[3rem] text-black">
+                    <h3 class="text-4xl font-black mb-8 leading-tight italic">Zero Compression Logistics.</h3>
+                    <p class="font-bold mb-12 opacity-80">Stream high-fidelity data across your entire ecosystem with zero packet loss, regardless of bandwidth.</p>
+                    <div class="aspect-square bg-black/10 rounded-3xl flex items-center justify-center border border-white/10">
+                        <svg class="w-32 h-32 opacity-20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5-10-5-10 5z"></path></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specs -->
+    <section id="specs" class="py-32 bg-black relative z-10 overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-white mb-20 text-center tracking-widest uppercase italic">Operational Specification</h2>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="flex items-center justify-between py-8 border-b border-white/10">
+                    <span class="text-slate-500 font-bold uppercase tracking-widest text-xs">Dimensions</span>
+                    <span class="text-white font-mono">146.6 x 70.6 x 8.25 mm</span>
+                </div>
+                <div class="flex items-center justify-between py-8 border-b border-white/10">
+                    <span class="text-slate-500 font-bold uppercase tracking-widest text-xs">Weight</span>
+                    <span class="text-white font-mono">187 grams / 0.41 lbs</span>
+                </div>
+                <div class="flex items-center justify-between py-8 border-b border-white/10">
+                    <span class="text-slate-500 font-bold uppercase tracking-widest text-xs">Optics</span>
+                    <span class="text-white font-mono">48MP Main | 12MP Ultra Wide | 5x Telephoto</span>
+                </div>
+                <div class="flex items-center justify-between py-8 border-b border-white/10">
+                    <span class="text-slate-500 font-bold uppercase tracking-widest text-xs">Interface</span>
+                    <span class="text-white font-mono">NeuralTouch™ V3 with Haptic Feedback</span>
+                </div>
+                <div class="flex items-center justify-between py-8">
+                    <span class="text-slate-500 font-bold uppercase tracking-widest text-xs">Storage</span>
+                    <span class="text-white font-mono">256GB / 512GB / 1TB Quantum SSD</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="buy" class="py-40 bg-slate-950 relative z-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col items-center text-center space-y-12">
+                <div class="w-32 h-32 bg-white rounded-[2.5rem] flex items-center justify-center mb-4">
+                     <svg class="w-16 h-16 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h2 class="text-6xl md:text-8xl font-black text-white italic tracking-tighter uppercase">Own the future.</h2>
+                <div class="flex flex-col md:flex-row gap-6">
+                    <button class="px-20 py-8 bg-amber-500 text-black font-black rounded-[2rem] text-2xl hover:scale-105 transition-all shadow-2xl shadow-amber-500/30 uppercase">
+                        Secure yours now
+                    </button>
+                    <button class="px-20 py-8 border-2 border-white text-white font-bold rounded-[2rem] text-2xl hover:bg-white/10 transition-all uppercase">
+                        Book a demo
+                    </button>
+                </div>
+                
+                <div class="w-full pt-40 grid md:grid-cols-4 gap-12 text-left">
+                    <div class="col-span-2">
+                        <div class="font-display font-black text-4xl text-white mb-8 italic">PROMAX<span class="text-amber-500">.</span></div>
+                        <p class="text-slate-500 max-w-sm">The world's first truly sentient hardware experience. Designed in Switzerland, assembled on Earth.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-8 uppercase tracking-[0.3em] text-[10px]">Supply Chain</h4>
+                        <ul class="text-slate-500 space-y-4 text-sm font-medium">
+                            <li><a href="#" class="hover:text-amber-500 transition-colors">Availability</a></li>
+                            <li><a href="#" class="hover:text-amber-500 transition-colors">Retail Locations</a></li>
+                            <li><a href="#" class="hover:text-amber-500 transition-colors">Business Sales</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-8 uppercase tracking-[0.3em] text-[10px]">Engineering</h4>
+                        <ul class="text-slate-500 space-y-4 text-sm font-medium">
+                            <li><a href="#" class="hover:text-amber-500 transition-colors">Architecture</a></li>
+                            <li><a href="#" class="hover:text-amber-500 transition-colors">Sustainability</a></li>
+                            <li><a href="#" class="hover:text-amber-500 transition-colors">Documentation</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="w-full pt-20 border-t border-white/5 flex flex-col md:flex-row justify-between gap-8 mt-20 opacity-30">
+                    <p class="text-xs font-bold uppercase tracking-widest">&copy; 2026 PROMAX LOGISTICS INC. ALL RIGHTS RESERVED.</p>
+                    <div class="flex gap-12 text-xs font-bold uppercase tracking-widest leading-none">
+                        <a href="#">Privacy</a>
+                        <a href="#">Legal</a>
+                        <a href="#">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function copyPrompt() {
+            const promptText = document.getElementById('promptText').innerText;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const btn = event.target.closest('button');
+                const originalContent = btn.innerHTML;
+                btn.innerHTML = '<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Copied!';
+                btn.classList.add('bg-amber-500', 'text-black');
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.classList.remove('bg-amber-500', 'text-black');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
