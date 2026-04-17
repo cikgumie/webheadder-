@@ -66,37 +66,9 @@
 
 <body class="bg-[#020617] text-white overflow-x-hidden">
 
-    <!-- AI Prompt Banner -->
-    <div class="fixed top-0 left-0 right-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink p-4 z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-            <div class="flex-1">
-                <p class="font-bold text-sm mb-1 text-black">🤖 AI PROMPT</p>
-                <div class="relative group">
-                    <pre id="promptText" class="text-[10px] leading-tight bg-black/30 p-2 rounded-lg overflow-x-auto whitespace-pre-wrap font-mono text-white/90 max-h-24">Create a dark futuristic header with:
-- Deep navy/slate background (#020617)
-- Animated glowing blobs (cyan & purple) with blur
-- Large bold heading with gradient text (cyan→purple→pink)
-- Typewriter effect cycling through phrases
-- Glassmorphism card with code snippet
-- Floating animation on the right panel
-- Neon-styled buttons with glow shadows
-- Outfit/Inter fonts, 8xl heading size</pre>
-                </div>
-            </div>
-            <div class="flex flex-col gap-2">
-                <button onclick="copyPrompt()" class="bg-black text-neon-blue px-4 py-2 rounded-lg font-bold text-xs hover:bg-slate-900 transition-colors flex items-center gap-2">
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
-                    Copy Prompt
-                </button>
-                <a href="index.html" class="bg-white/20 text-black px-4 py-2 rounded-lg font-bold text-xs hover:bg-white/30 transition-colors text-center">
-                    Back to Showcase
-                </a>
-            </div>
-        </div>
-    </div>
 
     <!-- Navigation -->
-    <nav class="fixed top-[152px] w-full z-40 glass border-b border-white/10">
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <div class="font-display font-black text-2xl tracking-tight">
                 <span class="text-neon-blue">Neural</span>Core
@@ -122,7 +94,7 @@
     </div>
 
     <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center pt-[240px]">
+    <header class="relative min-h-screen flex items-center pt-20">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center w-full relative z-10 py-20">
             <div class="space-y-8">
                 <div
@@ -515,9 +487,49 @@ console.log("Status: READY");</code></pre>
                         </svg>
                     </a>
                 </div>
+               <!-- Floating AI Prompt Button -->
+    <div class="fixed bottom-6 right-6 z-[100] flex flex-col gap-3">
+        <a href="index.html" class="bg-white/10 backdrop-blur-md border border-white/10 text-white p-4 rounded-full shadow-2xl hover:bg-white/20 transition-all group flex items-center gap-3">
+            <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 font-bold text-xs uppercase tracking-widest whitespace-nowrap">Back to Hub</span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+        </a>
+        <button onclick="openModal()" class="bg-gradient-to-r from-neon-blue to-neon-purple p-4 rounded-full shadow-[0_0_20px_rgba(0,242,255,0.3)] hover:scale-110 transition-all group flex items-center gap-3">
+            <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 font-bold text-xs uppercase tracking-widest whitespace-nowrap text-white">View AI Prompt</span>
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        </button>
+    </div>
+
+    <!-- AI Prompt Modal -->
+    <div id="aiModal" class="fixed inset-0 z-[110] hidden items-center justify-center p-6 bg-black/60 backdrop-blur-sm">
+        <div class="bg-slate-900 border border-white/10 rounded-[2.5rem] w-full max-w-lg p-8 shadow-2xl animate-in zoom-in-95 duration-200">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-display font-black text-2xl text-white flex items-center gap-2">
+                    <span class="text-neon-blue">🤖</span> AI Prompt
+                </h3>
+                <button onclick="closeModal()" class="text-slate-500 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
             </div>
+            <div class="relative group">
+                <pre id="promptText" class="bg-black/40 text-slate-300 p-6 rounded-2xl text-[10px] font-mono leading-relaxed overflow-x-auto border border-white/5 whitespace-pre-wrap">Create a dark futuristic header with:
+- Deep navy/slate background (#020617)
+- Animated glowing blobs (cyan & purple) with blur
+- Large bold heading with gradient text (cyan→purple→pink)
+- Typewriter effect cycling through phrases
+- Glassmorphism card with code snippet
+- Floating animation on the right panel
+- Neon-styled buttons with glow shadows
+- Outfit/Inter fonts, 8xl heading size</pre>
+                <div class="absolute top-4 right-4">
+                    <button onclick="copyPrompt()" class="bg-neon-blue/10 hover:bg-neon-blue text-neon-blue hover:text-black px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                        Copy
+                    </button>
+                </div>
+            </div>
+            <p class="mt-4 text-slate-500 text-[10px] text-center uppercase tracking-[0.2em]">Paste this into your favorite LLM</p>
         </div>
-    </footer>
+    </div>
 
     <script>
         class Typewriter {
@@ -554,10 +566,25 @@ console.log("Status: READY");</code></pre>
                 setTimeout(() => this.type(), currentSpeed);
             }
         }
+
+        const modal = document.getElementById('aiModal');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
         function copyPrompt() {
             const promptText = document.getElementById('promptText').innerText;
             navigator.clipboard.writeText(promptText).then(() => {
-                const btn = event.target.closest('button');
+                const btn = event.currentTarget;
                 const originalContent = btn.innerHTML;
                 btn.innerHTML = '<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Copied!';
                 btn.classList.add('bg-green-500', 'text-black');
@@ -567,6 +594,17 @@ console.log("Status: READY");</code></pre>
                 }, 2000);
             });
         }
+
+        // Close on escape
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Close on click outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             new Typewriter('type-1', ['Digital Future.', 'Neural Network.', 'Dynamic Cloud.'], { speed: 80, pause: 1500 });
         });

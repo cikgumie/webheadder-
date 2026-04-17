@@ -22,38 +22,9 @@
 </head>
 <body class="bg-black text-green-400 min-h-screen flex items-center relative overflow-hidden">
 
-    <!-- AI Prompt Banner -->
-    <div class="fixed top-0 left-0 right-0 bg-gradient-to-r from-green-600 to-emerald-600 p-4 z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-            <div class="flex-1">
-                <p class="font-bold text-sm mb-1 text-black">🤖 AI PROMPT</p>
-                <div class="relative group">
-                    <pre id="promptText" class="text-[10px] leading-tight bg-black/30 p-2 rounded-lg overflow-x-auto whitespace-pre-wrap font-mono text-white/90 max-h-24">Create a Matrix-style developer header with:
-- Black background with canvas overlay
-- Matrix rain: random chars falling (green text)
-- Scanline effect with repeating-linear-gradient
-- Monospace font throughout
-- Terminal mockup with 3 dots (red/yellow/green)
-- Command output simulation
-- 4 stat cards in 2x2 grid
-- Green gradient heading (code.build.ship)</pre>
-                </div>
-            </div>
-            <div class="flex flex-col gap-2">
-                <button onclick="copyPrompt()" class="bg-black text-green-400 px-4 py-2 rounded-lg font-bold text-xs hover:bg-slate-900 transition-colors flex items-center gap-2">
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
-                    Copy Prompt
-                </button>
-                <a href="index.html" class="bg-white/20 text-black px-4 py-2 rounded-lg font-bold text-xs hover:bg-white/30 transition-colors text-center">
-                    Back to Showcase
-                </a>
-            </div>
-        </div>
-    </div>
-
     <!-- Navigation -->
-    <nav class="fixed top-[152px] left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-40 bg-black/50 backdrop-blur-md border border-green-500/20 rounded-2xl">
-        <div class="px-6 py-4 flex items-center justify-between">
+    <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-green-500/20">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <div class="font-mono font-black text-xl flex items-center gap-2">
                 <span class="text-green-500 animate-pulse">></span>
                 <span class="text-white">DEVKIT</span>
@@ -74,7 +45,7 @@
     <div class="fixed inset-0 pointer-events-none z-30 opacity-50" style="background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);"></div>
 
     <!-- Hero Section -->
-    <header class="min-h-screen flex items-center relative z-10 pt-[240px]">
+    <header class="min-h-screen flex items-center pt-20 relative z-10">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center w-full pb-20">
             <div class="space-y-8">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 font-mono text-sm leading-none">
@@ -300,6 +271,50 @@
         </div>
     </footer>
 
+    <!-- Floating AI Prompt Button -->
+    <div class="fixed bottom-6 right-6 z-[100] flex flex-col gap-3">
+        <a href="index.html" class="bg-black/80 backdrop-blur-md border border-green-500/20 text-green-500 p-4 rounded-full shadow-2xl hover:bg-green-500 hover:text-black transition-all group flex items-center gap-3">
+            <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 font-bold text-xs uppercase tracking-widest whitespace-nowrap">Back to Hub</span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+        </a>
+        <button onclick="openModal()" class="bg-green-500 text-black p-4 rounded-full shadow-xl shadow-green-400/20 hover:scale-110 transition-all group flex items-center gap-3">
+            <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 font-bold text-xs uppercase tracking-widest whitespace-nowrap">View AI Prompt</span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        </button>
+    </div>
+
+    <!-- AI Prompt Modal -->
+    <div id="aiModal" class="fixed inset-0 z-[110] hidden items-center justify-center p-6 bg-black/60 backdrop-blur-sm">
+        <div class="bg-black border border-green-500/30 rounded-[2.5rem] w-full max-w-lg p-8 shadow-[0_0_50px_rgba(34,197,94,0.1)] animate-in zoom-in-95 duration-200">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-mono font-black text-2xl text-green-500 flex items-center gap-2 tracking-tighter">
+                    <span class="animate-pulse">🤖</span> ACCESS_PROMPT
+                </h3>
+                <button onclick="closeModal()" class="text-green-900 hover:text-green-500 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="relative group">
+                <pre id="promptText" class="bg-black text-green-500/80 p-6 rounded-2xl text-[10px] font-mono leading-relaxed overflow-x-auto border border-green-500/20 whitespace-pre-wrap shadow-inner">Create a Matrix-style digital rain header with:
+- HTML5 Canvas for the rain effect
+- Green characters on black background
+- Variable speed and transparency for rain
+- Centered neon green heading with glow
+- "SYSTEM OVERRIDE" subtext in mono font
+- Pulsing CTA button with scan-line effect
+- Glitch animation on text hover
+- Navigation with transparent backdrop</pre>
+                <div class="absolute top-4 right-4">
+                    <button onclick="copyPrompt()" class="bg-green-500 text-black px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                        Copy
+                    </button>
+                </div>
+            </div>
+            <p class="mt-4 text-green-900 text-[10px] text-center uppercase tracking-[0.2em] font-mono animate-pulse">Execute in LLM interface...</p>
+        </div>
+    </div>
+
     <script>
         // Matrix Rain Effect
         const canvas = document.getElementById('matrix-bg');
@@ -337,21 +352,44 @@
         }
         render();
 
+        // Modal Logic
+        const modal = document.getElementById('aiModal');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
         function copyPrompt() {
             const promptText = document.getElementById('promptText').innerText;
             navigator.clipboard.writeText(promptText).then(() => {
-                const btn = event.target.closest('button');
-                const originalText = btn.innerHTML;
+                const btn = event.currentTarget;
+                const originalContent = btn.innerHTML;
                 btn.innerHTML = '<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Copied!';
-                btn.classList.add('bg-green-500', 'text-black');
+                btn.classList.add('bg-white', 'text-black');
                 setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.classList.remove('bg-green-500', 'text-black');
+                    btn.innerHTML = originalContent;
+                    btn.classList.remove('bg-white', 'text-black');
                 }, 2000);
             });
         }
+
+        // Close on escape
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Close on click outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
     </script>
-</body>
-</html>
 </body>
 </html>
